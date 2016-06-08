@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//form
+Route::get('/','AppController@form');
+
+//Api
+Route::post('/api', 'ApiController@consulta');
