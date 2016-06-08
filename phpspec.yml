@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: api_sintegra
+        psr4_prefix: api_sintegra
+        src_path: app
