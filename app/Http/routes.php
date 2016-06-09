@@ -16,3 +16,13 @@ Route::get('/','AppController@form');
 
 //Api
 Route::post('/api', 'ApiController@consulta');
+
+//Autenticação
+Route::get('home', 'HomeController@index');
+
+Route::post('auth/register', 'Auth\AuthController@create');
+
+Route::controllers([
+'auth' => 'Auth\AuthController',
+'password' => 'Auth\PasswordController',
+]);
