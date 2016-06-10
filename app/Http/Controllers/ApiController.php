@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use api_sintegra\Http\Requests;
 use api_sintegra\Http\Controllers\Controller;
 use Symfony\Component\DomCrawler\Crawler;
+use api_sintegra\Sintegra;
 
 
 
@@ -44,7 +45,8 @@ class ApiController extends Controller
 
         $crawler = new Crawler($result);
     	
-        
+        //Parser com Regex 
+
         $attributes = $crawler
         ->filterXpath('//table/tr/td')
         ->extract(array('_text', 'class'));
@@ -67,6 +69,23 @@ class ApiController extends Controller
                         'Situação Cadastral Vigente'    => preg_replace('/[^\x00-\x7F]/','' ,$attributes[32][0])
                 ]
             );
+
+
+        //Inserindo respota JSON no banco  
+
+        $consulta = new Sintegra;
+        $consulta->id_usuario = 10;
+        $consulta->cnpj = $infoarray['cnpj'];
+        $consulta->json = json_encode($infoarray,JSON_UNESCAPED_UNICODE);
+        $consulta->save();
+
+        return redirect("/api/resposta/$consulta->id");
+    }
+
+    public function resposta($id){
+        $result = Sintegra::find($id);
+
+        return json_encode($result,JSON_UNESCAPED_UNICODE);
     }
 
 }

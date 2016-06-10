@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Sintegra extends Migration
+class CreateSintegra extends Migration
 {
     /**
      * Run the migrations.
@@ -18,7 +18,7 @@ class Sintegra extends Migration
             $table->increments("id");
             $table->integer("id_usuario");            
             $table->string("cnpj");
-            $table->json("resultado_json");
+            $table->text("json");
         });
     }
 
@@ -30,5 +30,6 @@ class Sintegra extends Migration
     public function down()
     {
         //
+        Schema::drop('sintegra');
     }
 }

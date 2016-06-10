@@ -16,11 +16,14 @@ Route::get('/','AppController@form');
 
 //Api
 Route::post('/api', 'ApiController@consulta');
+Route::get('/api/resposta/{id}','ApiController@resposta');
+
+//test
 Route::get('test', function(){
 	return phpinfo();
 });
 //Autenticação
-Route::get('home', 'HomeController@index');
+Route::get('/login', 'LoginController@login');
 
 Route::post('auth/register', 'Auth\AuthController@create');
 

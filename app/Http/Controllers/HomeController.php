@@ -14,8 +14,9 @@ class HomeController extends Controller
 	{
 		$this->middleware('auth');
 	}
+	
 	public function index()
 	{
-	return view('app.home');
+		return view('app.home');
 	}
 }
