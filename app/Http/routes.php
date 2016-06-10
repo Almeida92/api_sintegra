@@ -11,12 +11,14 @@
 |
 */
 
-//form
+//App
 Route::get('/','AppController@form');
+Route::get('/lista', 'AppController@lista');
 
 //Api
 Route::post('/api', 'ApiController@consulta');
 Route::get('/api/resposta/{id}','ApiController@resposta');
+Route::get('/api/excluir/{id}','ApiController@excluir');
 
 //test
 Route::get('test', function(){

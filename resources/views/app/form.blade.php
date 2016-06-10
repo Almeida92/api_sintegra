@@ -10,4 +10,9 @@
 
 		  <button type="submit" class="btn btn-primary">Consultar</button>
 		</form>
+
+		<div>
+			<br>
+			<a href="/lista" class="btn btn-primary">Lista</a>
+		</div>
 @endsection

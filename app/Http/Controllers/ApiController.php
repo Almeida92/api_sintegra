@@ -85,7 +85,14 @@ class ApiController extends Controller
     public function resposta($id){
         $result = Sintegra::find($id);
 
-        return json_encode($result,JSON_UNESCAPED_UNICODE);
+        return view('app.item',['result'=>$result]);
+    }
+    public function excluir($id){
+
+        $item = Sintegra::where('id','=',$id)->first();
+        $item->delete();
+
+        return view('app.excluido');
     }
 
 }
