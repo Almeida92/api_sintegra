@@ -16,7 +16,9 @@ Route::get('/','AppController@form');
 
 //Api
 Route::post('/api', 'ApiController@consulta');
-
+Route::get('test', function(){
+	return phpinfo();
+});
 //Autenticação
 Route::get('home', 'HomeController@index');
 
